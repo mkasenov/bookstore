@@ -1,0 +1,172 @@
+
+{%load static%}
+<link href="{% static 'templatemo_style.css' %}" rel="stylesheet">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Book Store </title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!--  Free CSS Templates from www.templatemo.com -->
+<div id="templatemo_container">
+	<div id="templatemo_menu">
+    	<ul>
+            <li><a href="{% url 'blog-Home' %}" class="current">Home</a></li>
+
+            <li><a href="{% url 'blog-newReleases' %}">New Releases</a></li>
+            <li ><a href="{% url 'register' %}" style="margin-left: 360px;">Register</a></li>
+						{% if user.is_authenticated %}
+						<li><a href="#">{{ user.username }}</a></li>
+						<li><a href="{% url 'logout' %}">Logout</a></li>
+
+						{% else %}
+						<li><a href="{% url 'login' %}">Login</a></li>
+						{% endif %}
+            <li><a href="{% url 'blog-Cart' %}">Cart</a></li>
+    	</ul>
+    </div> <!-- end of menu -->
+
+    <div id="templatemo_header">
+
+    	<div id="templatemo_special_offers">
+				 <p>
+                #<span>25%</span> discounts for
+                        purchase over $80
+        	</p>
+			<a href="#" style="margin-left: 50px;">Read more...</a>
+        </div>
+
+
+        <div id="templatemo_new_books">
+        	<ul>
+                <li>Game of Thrones II</li>
+                <li>In Search of Lost Time</li>
+                <li>The Great Gatsby</li>
+            </ul>
+            <a href="% url 'blog-newReleases' %" style="margin-left: 50px;">Read more...</a>
+        </div>
+    </div> <!-- end of header -->
+
+
+
+    <div id="templatemo_content">
+
+        <div id="templatemo_content_left">
+        	<div class="templatemo_content_left_section">
+
+            </div>
+			<div class="templatemo_content_left_section">
+
+                <ul>
+
+            	</ul>
+            </div>
+
+
+        </div> <!-- end of content left -->
+
+        <div id="templatemo_content_right">
+
+            {% if user.is_authenticated %}
+
+            {% for post in posts %}
+
+        	<div class="templatemo_product_box">
+            	<h1><a href="{% url 'blog-Subpage' post.id %}" class="btn btn-success btn-lg">{{ post.title }} </a> <span>by {{ post.author }} </span></h1>
+   	      <img src="../../static/templatemo_image_01.jpg" alt="image" />
+                <div class="product_info">
+                    {{ post.category }}
+                  <h3>$55</h3>
+                    <a href="#" class='add_to_cart' data-slug = '{{ post.slug }}'> <button class="btn btn-danger"> Add to Cart</button></a>
+                    <script src="{% static 'jquery.js' %}"></script>
+
+                    <div class="detail_button"><a href="{% url 'blog-Subpage' post.id %}">Detail</a></div>
+                </div>
+                <div class="cleaner">&nbsp;</div>
+            </div>
+
+<!--            <div class="cleaner_with_width">&nbsp;</div>-->
+            {% endfor %}
+
+            {% endif %}
+
+<!--            <div class="templatemo_product_box">-->
+<!--            	<h1>Cooking  <span>(by New Author)</span></h1>-->
+<!--       	    <img src="../../static/templatemo_image_02.jpg" alt="image" />-->
+<!--                <div class="product_info">-->
+<!--                	<p>Aliquam a dui, ac magna quis est eleifend dictum.</p>-->
+<!--                    <h3>$35</h3>-->
+<!--                    <div class="buy_now_button"><a href="#">Buy Now</a></div>-->
+<!--                    <div class="detail_button"><a href="#">Detail</a></div>-->
+<!--                </div>-->
+<!--                <div class="cleaner">&nbsp;</div>-->
+<!--            </div>-->
+
+<!--            <div class="cleaner_with_height">&nbsp;</div>-->
+
+<!--            <div class="templatemo_product_box">-->
+<!--            	<h1>Gardening <span>(by Famous Author)</span></h1>-->
+<!--   	      <img src="../../static/templatemo_image_03.jpg" alt="image" />-->
+<!--                <div class="product_info">-->
+<!--                	<p>Ut fringilla enim sed turpis. Sed justo dolor, convallis at.</p>-->
+<!--                    <h3>$65</h3>-->
+<!--                    <div class="buy_now_button"><a href="#">Buy Now</a></div>-->
+<!--                    <div class="detail_button"><a href="#">Detail</a></div>-->
+<!--                </div>-->
+<!--                <div class="cleaner">&nbsp;</div>-->
+<!--            </div>-->
+
+<!--            <div class="cleaner_with_width">&nbsp;</div>-->
+
+<!--            <div class="templatemo_product_box">-->
+<!--            	<h1>Sushi Book  <span>(by Japanese Name)</span></h1>-->
+<!--            	<img src="../../static/templatemo_image_04.jpg" alt="image" />-->
+<!--                <div class="product_info">-->
+<!--                	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>-->
+<!--                    <h3>$45</h3>-->
+<!--                    <div class="buy_now_button"><a href="#">Buy Now</a></div>-->
+<!--                    <div class="detail_button"><a href="#">Detail</a></div>-->
+<!--                </div>-->
+<!--                <div class="cleaner">&nbsp;</div>-->
+<!--            </div>-->
+
+<!--            <div class="cleaner_with_height">&nbsp;</div>-->
+
+<!--            <a href="#"><img src="../../static/templatemo_ads.jpg" alt="ads" /></a>-->
+        </div>
+
+    	<div class="cleaner_with_height">&nbsp;</div>
+    </div>
+
+<!--    <div id="templatemo_footer">-->
+
+<!--	       <a href="subpage.html">Home</a> | <a href="subpage.html">Search</a> | <a href="subpage.html">Books</a> | <a href="#">New Releases</a> | <a href="#">FAQs</a> | <a href="#">Contact Us</a><br />-->
+<!--        Copyright © 2024 <a href="#"><strong>Free Book</strong></a>-->
+<!--     </div>-->
+
+</div>
+<script>
+								$(document).ready(function(){
+									$('.add_to_cart').on('click', function(e){
+										e.preventDefault()
+										product_slug = $(this).attr('data-slug')
+										data = {
+											product_slug: product_slug
+										}
+										$.ajax({
+											type: "GET",
+											url: '{% url "add_to_cart" %}',
+											data: data,
+											success: function(data){
+												$("#cart_count").html(data.cart_total)
+											}
+										})
+									})
+								})
+					</script>
+</body>
+</html>
